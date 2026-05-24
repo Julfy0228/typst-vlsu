@@ -1,0 +1,10 @@
+[package]
+name = "vlsu-report"
+version = "0.1.0"
+entrypoint = "lib.typ"
+authors = ["Julfy0228"]
+license = "MIT"
+description = "Typst template for VLSU coursework and lab reports"
+keywords = ["vlsu", "report", "coursework", "lab"]
+categories = ["report"]
+compiler = "0.13.0"

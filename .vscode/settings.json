@@ -1,0 +1,9 @@
+{
+  "tinymist.fontPaths": [
+    "C:/Users/Julfy/Desktop/typst-vlsu/fonts/GOST"
+  ],
+  "tinymist.typstExtraArgs": [
+    "--font-path",
+    "C:/Users/Julfy/Desktop/typst-vlsu/fonts/GOST"
+  ]
+}
