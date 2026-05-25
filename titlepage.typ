@@ -44,9 +44,9 @@
     let result = [*#header* \ ]
     for (group, names) in groups {
       let line = if names.len() == 1 {
-        "студент гр. " + group + ":"
+        "студент гр. " + group
       } else {
-        "студенты гр. " + group + ":"
+        "студенты гр. " + group
       }
       result += [#line \ ]
       for (i, name) in names.enumerate() {

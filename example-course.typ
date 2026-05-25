@@ -1,6 +1,4 @@
-#import "lib.typ": template
-#import "frame/utils.typ": frame
-#import "frame/config.typ": tables
+#import "lib.typ": template, frame, tables
 
 #let frame-fields = (
   _title: [ ВлГУ.09.03.02.17.00.00 ],
@@ -37,6 +35,7 @@
     position: "доц. каф. ИСПИ",
     gender: "female"
   ),
+  numbering-headings: true
 )
 
 #heading([ Аннотация ], outlined: false)

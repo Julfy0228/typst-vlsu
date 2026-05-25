@@ -49,8 +49,10 @@
 
 ```
 typst-vlsu/
-├── lib.typ              # Основной шаблон
+├── lib.typ              # Точка входа — реэкспорт всех компонентов
+├── template.typ         # Основной шаблон документа
 ├── titlepage.typ        # Титульная страница
+├── appendix.typ         # Логика для приложений
 ├── typst.toml           # Конфигурация проекта
 ├── fonts/               # Встроенные шрифты
 │   ├── Times New Roman/ # Шрифт для основного текста
@@ -304,11 +306,10 @@ typst compile main.typ output.pdf
 
 ### Рамки для курсовых работ
 
-Для курсовых работ доступны специальные рамки (ГОСТ). Используйте:
+Для курсовых работ доступны специальные рамки (ГОСТ). Все компоненты можно импортировать из `lib.typ`:
 
 ```typst
-#import "frame/utils.typ": frame
-#import "frame/config.typ": tables
+#import "lib.typ": template, frame, tables
 
 #let frame-fields = (
   _title: [ Код проекта ],
@@ -321,7 +322,50 @@ typst compile main.typ output.pdf
   _approved: [],
 )
 
+#show: template.with(...)
 #show: frame.with(frame-fields, table: tables.form-2)
+```
+
+### Приложения
+
+Для оформления приложений используйте функции `appendixes` и `appendix-heading`:
+
+```typst
+#import "lib.typ": appendixes, appendix-heading
+
+#appendixes[
+  #appendix-heading("обязательное")[Исходный код]
+
+  == Модуль main
+  #figure(
+    ```python
+    def main():
+        print("Hello, World!")
+    ```,
+    caption: [Главный модуль]
+  )
+
+  #appendix-heading("справочное")[Техническая документация]
+
+  == API справка
+  Описание API методов.
+]
+```
+
+### Нумерация заголовков и страниц
+
+По умолчанию нумерация отключена. Включите её через параметры шаблона:
+
+```typst
+#show: template.with(
+  title: [ Лабораторная работа №1 ],
+  discipline: [ по дисциплине "Название" ],
+  theme: [ Тема ],
+  students: ((name: "И. И. Иванов", group: "ИСТ-123", gender: "male")),
+  teacher: (name: "П. П. Петрова", position: "ст. преп.", gender: "female"),
+  numbering-pages: true,    // Нумерация страниц
+  numbering-headings: true, // Нумерация заголовков (1, 1.1, 1.1.1)
+)
 ```
 
 ### Оглавление
