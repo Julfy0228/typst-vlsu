@@ -39,7 +39,7 @@
       stroke: get-value(cell-data, "stroke", default: thin-stroke),
       fill: none,
       inset: 1mm,
-      align(horizon + cell-align, frame-cell-text(cell-data, body)),
+      align(horizon + cell-align, frame-cell-text(cell-data, body))
     )
   )
 }
@@ -52,7 +52,7 @@
     line(
       start: (line-data.x1, line-data.y1),
       end: (line-data.x2, line-data.y2),
-      stroke: get-value(line-data, "stroke", default: 1pt),
+      stroke: get-value(line-data, "stroke", default: 1pt)
     )
   )
 }
@@ -68,7 +68,7 @@
       page.width - table.height - 5mm
     } else {
       page.height - table.height - 5mm
-    },
+    }
   )
 
   for cell-data in table.cells {
@@ -80,7 +80,7 @@
   }
 }
 
-#let render-frame(fields) = context {
+#let make-background(fields, table) = context {
   let page-num = counter(page).get().first()
   if page-num <= 2 { return }
 
@@ -89,30 +89,35 @@
     dx: 20mm,
     dy: 5mm,
     rect(
-      width: 
-        if page.flipped {
-          page.height - 25mm
-        } else {
-          page.width - 25mm
-        },
-      height:
-        if page.flipped {
-          page.width - 10mm
-        } else {
-          page.height - 10mm
-        },
+      width: if page.flipped { page.height - 25mm } else { page.width - 25mm },
+      height: if page.flipped { page.width - 10mm } else { page.height - 10mm },
       stroke: thick-stroke,
-      fill: none,
+      fill: none
     )
   )
 
   let numbering = (
     _page: [#counter(page).display()],
-    _pages: [#counter(page).final().first()],
+    _pages: [#counter(page).final().first()]
   )
-  if page-num == 3 {
-    draw-table(tables.form-2, fields + numbering)
-  } else {
-    draw-table(tables.form-2a, fields + numbering)
+
+  draw-table(table, fields + numbering)
+}
+
+#let frame(fields, table: dictionary, doc) = {
+  if table == none {
+    set page(
+      margin: (bottom: 20mm),
+      background: none
+    )
+    doc
+    return
   }
+  let bottom-margin = table.height + 5mm + 10mm
+
+  set page(
+    margin: (bottom: bottom-margin),
+    background: make-background(fields, table)
+  )
+  doc
 }
