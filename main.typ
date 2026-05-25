@@ -1,26 +1,22 @@
 #import "lib.typ": template
-#import "frame/config.typ": frame-config
 #import "frame/utils.typ": render-frame
 
 #set page(background: render-frame(
-  "auto",
-  frame-config,
   (
-    title: [ ВлГУ.09.03.02.17.00.00 ],
-    discipline: [
-      к курсовому проекту по дисциплине \
-      "Распределённые программные системы" \
-      на тему
+    _title: [ ВлГУ.09.03.02.17.00.00 ],
+    _description: [
+      Система XXX\
+      ""\
+      Пояснительная записка
     ],
-    developed: [И. И. Иванов],
-    checked: [И. И. Иванов],
-    standard_controlled: [],
-    approved: [],
-    group: [АБВ-123],
+    _developed: [И. И. Иванов],
+    _checked: [И. И. Иванов],
+    _standard_controlled: [],
+    _approved: [],
+    _group: [ИСТ-123],
 
-    // Если нужен Т. контр. technical_controlled: [],
+    // Если нужен Т. контр. _technical_controlled: [...],
   ),
-  // Если нужен Т. контр. show-technical-control: true
 ))
 
 #show: template.with(

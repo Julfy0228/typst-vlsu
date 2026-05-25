@@ -1,18 +1,10 @@
 #let thin-stroke = .3mm
 #let thick-stroke = .8mm
 
-#let frame-config = (
-  outer: (
-    x: 20mm,
-    y: 5mm,
-    width: 185mm,
-    height: 287mm,
-    stroke: thick-stroke,
-  ),
+#let tables = (
   form-2: (
-    x: 20mm,
-    y: 252mm,
-    text-size: 7pt,
+    width: 185mm,
+    height: 40mm,
     cells: (
       (x: 0mm, y: 0mm, width: 7mm, height: 5mm),
       (x: 7mm, y: 0mm, width: 10mm, height: 5mm),
@@ -33,33 +25,33 @@
       (x: 55mm, y: 10mm, width: 10mm, height: 5mm, text: [Дата]),
 
       (x: 0mm, y: 15mm, width: 17mm, height: 5mm, text: [Разраб.], align: left),
-      (x: 17mm, y: 15mm, width: 23mm, height: 5mm, text: "developed", align: left),
+      (x: 17mm, y: 15mm, width: 23mm, height: 5mm, text: "_developed", align: left),
       (x: 40mm, y: 15mm, width: 15mm, height: 5mm),
       (x: 55mm, y: 15mm, width: 10mm, height: 5mm),
 
       (x: 0mm, y: 20mm, width: 17mm, height: 5mm, text: [Пров.], align: left),
-      (x: 17mm, y: 20mm, width: 23mm, height: 5mm, text: "checked", align: left),
+      (x: 17mm, y: 20mm, width: 23mm, height: 5mm, text: "_checked", align: left),
       (x: 40mm, y: 20mm, width: 15mm, height: 5mm),
       (x: 55mm, y: 20mm, width: 10mm, height: 5mm),
 
-      (x: 0mm, y: 25mm, width: 17mm, height: 5mm, text: [Т. контр.], align: left, hidden-when: "technical-control"),
-      (x: 17mm, y: 25mm, width: 23mm, height: 5mm, text: "technical_controlled", align: left, hidden-when: "technical-control"),
-      (x: 40mm, y: 25mm, width: 15mm, height: 5mm, hidden-when: "technical-control"),
-      (x: 55mm, y: 25mm, width: 10mm, height: 5mm, hidden-when: "technical-control"),
+      (x: 0mm, y: 25mm, width: 17mm, height: 5mm, text: [Т. контр.], align: left),
+      (x: 17mm, y: 25mm, width: 23mm, height: 5mm, text: "_technical_controlled", align: left),
+      (x: 40mm, y: 25mm, width: 15mm, height: 5mm, hidden-when: "_technical-control"),
+      (x: 55mm, y: 25mm, width: 10mm, height: 5mm, hidden-when: "_technical-control"),
 
       (x: 0mm, y: 30mm, width: 17mm, height: 5mm, text: [Н. контр.], align: left),
-      (x: 17mm, y: 30mm, width: 23mm, height: 5mm, text: "standard_controlled", align: left),
+      (x: 17mm, y: 30mm, width: 23mm, height: 5mm, text: "_standard_controlled", align: left),
       (x: 40mm, y: 30mm, width: 15mm, height: 5mm),
       (x: 55mm, y: 30mm, width: 10mm, height: 5mm),
 
       (x: 0mm, y: 35mm, width: 17mm, height: 5mm, text: [Утв.], align: left),
-      (x: 17mm, y: 35mm, width: 23mm, height: 5mm, text: "approved", align: left),
+      (x: 17mm, y: 35mm, width: 23mm, height: 5mm, text: "_approved", align: left),
       (x: 40mm, y: 35mm, width: 15mm, height: 5mm),
       (x: 55mm, y: 35mm, width: 10mm, height: 5mm),
 
-      (x: 65mm, y: 0mm, width: 120mm, height: 15mm, text: "title"),
+      (x: 65mm, y: 0mm, width: 120mm, height: 15mm, text: "_title", text-size: 7mm),
 
-      (x: 65mm, y: 15mm, width: 70mm, height: 25mm, text: "discipline"),
+      (x: 65mm, y: 15mm, width: 70mm, height: 25mm, text: "_description"),
 
       (x: 135mm, y: 15mm, width: 15mm, height: 5mm, text: [Лит.]),
       (x: 135mm, y: 20mm, width: 5mm, height: 5mm),
@@ -67,12 +59,12 @@
       (x: 145mm, y: 20mm, width: 5mm, height: 5mm),
 
       (x: 150mm, y: 15mm, width: 15mm, height: 5mm, text: [Лист]),
-      (x: 150mm, y: 20mm, width: 15mm, height: 5mm, text: "page"),
+      (x: 150mm, y: 20mm, width: 15mm, height: 5mm, text: "_page"),
 
       (x: 165mm, y: 15mm, width: 20mm, height: 5mm, text: [Листов]),
-      (x: 165mm, y: 20mm, width: 20mm, height: 5mm, text: "pages"),
+      (x: 165mm, y: 20mm, width: 20mm, height: 5mm, text: "_pages"),
 
-      (x: 135mm, y: 25mm, width: 50mm, height: 15mm, text: "group"),
+      (x: 135mm, y: 25mm, width: 50mm, height: 15mm, text: "_group", text-size: 7mm),
     ),
     lines: (
       // Вертикальные линии
@@ -97,9 +89,10 @@
     ),
   ),
   form-2a: (
+    width: 185mm,
+    height: 15mm,
     x: 20mm,
     y: 277mm,
-    text-size: 7pt,
     cells: (
       (x: 0mm, y: 0mm, width: 7mm, height: 5mm),
       (x: 7mm, y: 0mm, width: 10mm, height: 5mm),
@@ -119,10 +112,10 @@
       (x: 40mm, y: 10mm, width: 15mm, height: 5mm, text: [Подп.]),
       (x: 55mm, y: 10mm, width: 10mm, height: 5mm, text: [Дата]),
 
-      (x: 65mm, y: 0mm, width: 110mm, height: 15mm, text: "title"),
+      (x: 65mm, y: 0mm, width: 110mm, height: 15mm, text: "_title", text-size: 7mm),
 
       (x: 175mm, y: 0mm, width: 10mm, height: 7mm, text: [Лист]),
-      (x: 175mm, y: 7mm, width: 10mm, height: 8mm, text: "page"),
+      (x: 175mm, y: 7mm, width: 10mm, height: 8mm, text: "_page"),
     ),
     lines: (
       // Вертикальные линии
