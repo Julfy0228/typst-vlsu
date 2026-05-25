@@ -9,6 +9,7 @@
   teacher: dictionary,
   numbering-pages: false,
   numbering-headings: false,
+  show-titlepage: true,
   doc
 ) = {
   // Страница
@@ -70,13 +71,15 @@
   )
 
   // Титульник
-  show: titlepage.with(
-    title: title,
-    discipline: discipline,
-    theme: theme,
-    students: students,
-    teacher: teacher
-  )
+  if show-titlepage {
+    show: titlepage.with(
+      title: title,
+      discipline: discipline,
+      theme: theme,
+      students: students,
+      teacher: teacher
+    )
+  }
 
   // Абзацы
   set par(
