@@ -38,9 +38,7 @@
 
   // Заголовки
   show heading: set block(above: 2em, below: 1em)
-  if numbering-headings {
-    set heading(numbering: "1.1")
-  }
+  set heading(numbering: if numbering-headings { "1.1" })
 
   // Заголовки первого уровня
   show heading.where(level: 1): set text(size: 14pt, weight: "bold")
