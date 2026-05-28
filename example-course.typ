@@ -51,7 +51,13 @@ The explanatory note describes the design and development of the information sys
 The system is implemented using modern technologies and is ready for use. The explanatory note contains #context(counter(page).final().first()) pages, #context(counter(image).final().first()) figures, #context(counter(table).final().first()) tables.
 #pagebreak()
 
-#show: frame.with(frame-fields, table: tables.form-2)
+#show: frame.with(
+  frame-fields,
+  table: (
+    first: tables.form-2,
+    continuation: tables.form-2a,
+  )
+)
 #outline(
   title: [Содержание],
   depth: 2

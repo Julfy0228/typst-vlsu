@@ -355,7 +355,13 @@ typst compile main.typ output.pdf
 )
 
 #show: template.with(...)
-#show: frame.with(frame-fields, table: tables.form-2)
+#show: frame.with(
+  frame-fields,
+  table: (
+    first: tables.form-2,
+    continuation: tables.form-2a,
+  )
+)
 ```
 
 ### Приложения

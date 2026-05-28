@@ -104,9 +104,30 @@
   }
 }
 
-#let make-background(fields, table) = context {
+#let resolve-frame-table(table, page-num, start-page) = {
+  if type(table) == dictionary and "first" in table and "continuation" in table {
+    if page-num == start-page {
+      table.at("first")
+    } else {
+      table.at("continuation")
+    }
+  } else {
+    table
+  }
+}
+
+#let table-bottom-margin(table) = {
+  if type(table) == dictionary and "first" in table and "continuation" in table {
+    calc.max(table.at("first").height, table.at("continuation").height) + 5mm + 10mm
+  } else {
+    table.height + 5mm + 10mm
+  }
+}
+
+#let make-background(fields, table, start-page) = context {
   let page-num = counter(page).get().first()
   if page-num <= 2 { return }
+  let active-table = resolve-frame-table(table, page-num, start-page)
 
   place(
     top + left,
@@ -125,10 +146,10 @@
     _pages: [#counter(page).final().first()]
   )
 
-  draw-table(table, fields + numbering)
+  draw-table(active-table, fields + numbering)
 }
 
-#let frame(fields, table: dictionary, doc) = {
+#let frame(fields, table: dictionary, doc) = context {
   if table == none {
     set page(
       margin: (bottom: 20mm),
@@ -137,11 +158,12 @@
     doc
     return
   }
-  let bottom-margin = table.height + 5mm + 10mm
+  let start-page = counter(page).get().first()
+  let bottom-margin = table-bottom-margin(table)
 
   set page(
     margin: (bottom: bottom-margin),
-    background: make-background(fields, table)
+    background: make-background(fields, table, start-page)
   )
   doc
 }
