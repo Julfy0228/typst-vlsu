@@ -1,4 +1,4 @@
-#import "lib.typ": template, frame, tables
+#import "lib.typ": *
 
 #let frame-fields = (
   _title: [ ВлГУ.09.03.02.17.00.00 ],
@@ -38,13 +38,13 @@
   numbering-headings: true
 )
 
-#heading([ Аннотация ], outlined: false)
+#struct([Аннотация])
 
 Пояснительная записка содержит описание проектирования и разработки информационной системы "Название системы". В документе представлены анализ предметной области, описание требований, архитектура системы, описание реализованных компонентов и результаты тестирования.
 
 Система реализована с использованием современных технологий и готова к использованию. Пояснительная записка содержит #context(counter(page).final().first()) страниц, #context(counter(image).final().first()) рисунков, #context(counter(table).final().first()) таблиц.
 
-#heading([ Abstract ], outlined: false)
+#struct([Abstract])
 
 The explanatory note describes the design and development of the information system "System Name". The document presents an analysis of the subject area, description of requirements, system architecture, description of implemented components, and testing results.
 

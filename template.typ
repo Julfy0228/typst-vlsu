@@ -1,6 +1,10 @@
 // Основной шаблон документа
 #import "titlepage.typ": titlepage
 
+#let struct(body) = {
+  heading(body, outlined: false, numbering: none, )
+}
+
 #let template(
   title: content,
   discipline: content,
@@ -38,12 +42,22 @@
 
   // Заголовки
   show heading: set text(size: 14pt, weight: "bold")
-  set heading(numbering: if numbering-headings { "1.1" })
+  set heading(numbering:
+    if numbering-headings {
+      "1.1"
+    }
+  )
 
   // Заголовки первого уровня
   show heading.where(level: 1): set block(above: 2em, below: 2em)
   show heading.where(level: 1): set align(center)
   show heading.where(level: 1): upper
+  show heading.where(level: 1): it => {
+      if lower(it.body.text) != "abstract" {
+        pagebreak(weak: true)
+      }
+      it
+  }
 
   // Заголовки второго уровня
   show heading.where(level: 2): it => {
@@ -91,8 +105,14 @@
   // Листинги
   show figure.where(kind: raw): set block(breakable: true)
 
-  // Таблицы
+  // Таблицы — ГОСТ 7.32-2017, п. 6.6
+  show figure.where(kind: table): it => {
+    set figure.caption(position: top)
+    it
+  }
   show figure.where(kind: table): set block(breakable: true)
+  show figure.caption.where(kind: table): set align(left)
+  show table.cell: set align(left)
 
   // Позже проверить с приложениями
   // Содержание (ГОСТ 7.32-2017, п. 6.10)
