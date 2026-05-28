@@ -53,7 +53,8 @@
   show heading.where(level: 1): set align(center)
   show heading.where(level: 1): upper
   show heading.where(level: 1): it => {
-      if lower(it.body.text) != "abstract" {
+      let heading-body = lower(repr(it.body))
+      if not heading-body.contains("abstract") and not heading-body.contains("аннотация") {
         pagebreak(weak: true)
       }
       it
