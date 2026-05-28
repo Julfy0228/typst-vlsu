@@ -4,29 +4,53 @@
   if key in data { data.at(key) } else { default }
 }
 
-#let frame-cell-text(cell, body) = context {
+#let frame-cell-text(cell, body, size: auto) = context {
   text(
     font: ("ГОСТ тип А", "Times New Roman"),
     style: "italic",
-    size: get-value(
-      cell,
-      "text-size",
-      default:  3.5mm
-    ),
+    size: if size == auto {
+      get-value(cell, "text-size", default: 3.5mm)
+    } else {
+      size
+    },
     body
   )
 }
 
-#let draw-frame-cell(cell-data, table, fields, origin) = {
+#let resolve-frame-cell-body(cell-data, fields) = {
   let text-value = get-value(cell-data, "text", default: [])
-  let body = if type(text-value) == str {
+  if type(text-value) == str {
     if text-value.starts-with("_") and text-value in fields {
       fields.at(text-value)
     }
   } else {
     text-value
   }
+}
 
+#let fit-frame-cell-text(cell-data, body) = context {
+  let no-wrap = get-value(cell-data, "nowrap", default: cell-data.height == 5mm)
+  let inset = get-value(cell-data, "inset", default: 1mm)
+  let cell-align = get-value(cell-data, "align", default: center)
+  let available-width = cell-data.width - inset * 2
+  let natural-content = frame-cell-text(cell-data, body)
+  let natural-width = measure(natural-content).width
+  let width-factor = if no-wrap and natural-width > available-width and natural-width > 0pt {
+    calc.min(100%, available-width / natural-width * 100%)
+  } else {
+    100%
+  }
+
+  if no-wrap {
+    box(scale(x: width-factor, origin: cell-align + horizon, reflow: true)[#natural-content])
+  } else {
+    natural-content
+  }
+}
+
+#let draw-frame-cell(cell-data, table, fields, origin) = {
+  let body = resolve-frame-cell-body(cell-data, fields)
+  let inset = get-value(cell-data, "inset", default: 1mm)
   let cell-align = get-value(cell-data, "align", default: center)
 
   place(
@@ -38,8 +62,8 @@
       height: cell-data.height,
       stroke: get-value(cell-data, "stroke", default: thin-stroke),
       fill: none,
-      inset: 1mm,
-      align(horizon + cell-align, frame-cell-text(cell-data, body))
+      inset: inset,
+      align(horizon + cell-align, fit-frame-cell-text(cell-data, body))
     )
   )
 }
