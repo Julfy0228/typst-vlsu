@@ -86,7 +86,30 @@
 
       (x: 135mm, y: 40mm, width: 50mm, height: 15mm, text: "_group", text-size: 7mm, align: center),
     ),
-    lines: (),
+    lines: (
+      // Вертикальные линии
+      (x1: 0mm, y1: 0mm, x2: 0mm, y2: 55mm, stroke: thick-stroke),
+      (x1: 185mm, y1: 0mm, x2: 185mm, y2: 55mm, stroke: thick-stroke),
+      (x1: 65mm, y1: 0mm, x2: 65mm, y2: 55mm, stroke: thick-stroke),
+      (x1: 17mm, y1: 0mm, x2: 17mm, y2: 55mm, stroke: thick-stroke),
+      (x1: 7mm, y1: 0mm, x2: 7mm, y2: 25mm, stroke: thick-stroke),
+      (x1: 40mm, y1: 0mm, x2: 40mm, y2: 55mm, stroke: thick-stroke),
+      (x1: 55mm, y1: 0mm, x2: 55mm, y2: 55mm, stroke: thick-stroke),
+      (x1: 135mm, y1: 15mm, x2: 135mm, y2: 55mm, stroke: thick-stroke),
+      (x1: 150mm, y1: 15mm, x2: 150mm, y2: 35mm, stroke: thick-stroke),
+      (x1: 165mm, y1: 15mm, x2: 165mm, y2: 35mm, stroke: thick-stroke),
+      (x1: 155mm, y1: 35mm, x2: 155mm, y2: 40mm, stroke: thick-stroke),
+
+      // Горизонтальные линии
+      (x1: 0mm, y1: 0mm, x2: 185mm, y2: 0mm, stroke: thick-stroke),
+      (x1: 0mm, y1: 55mm, x2: 185mm, y2: 55mm, stroke: thick-stroke),
+      (x1: 65mm, y1: 15mm, x2: 185mm, y2: 15mm, stroke: thick-stroke),
+      (x1: 0mm, y1: 20mm, x2: 65mm, y2: 20mm, stroke: thick-stroke),
+      (x1: 0mm, y1: 25mm, x2: 65mm, y2: 25mm, stroke: thick-stroke),
+      (x1: 135mm, y1: 20mm, x2: 185mm, y2: 20mm, stroke: thick-stroke),
+      (x1: 135mm, y1: 35mm, x2: 185mm, y2: 35mm, stroke: thick-stroke),
+      (x1: 65mm, y1: 40mm, x2: 185mm, y2: 40mm, stroke: thick-stroke)
+    )
   ),
   form-2: (
     width: 185mm,
@@ -150,7 +173,7 @@
       (x: 165mm, y: 15mm, width: 20mm, height: 5mm, text: [Листов]),
       (x: 165mm, y: 20mm, width: 20mm, height: 5mm, text: "_pages"),
 
-      (x: 135mm, y: 25mm, width: 50mm, height: 15mm, text: "_group", text-size: 7mm, align: center),
+      (x: 135mm, y: 25mm, width: 50mm, height: 15mm, text: "_group", text-size: 7mm, align: center)
     ),
     lines: (
       // Вертикальные линии
@@ -171,8 +194,8 @@
       (x1: 0mm, y1: 15mm, x2: 185mm, y2: 15mm, stroke: thick-stroke),
       (x1: 0mm, y1: 10mm, x2: 65mm, y2: 10mm, stroke: thick-stroke),
       (x1: 135mm, y1: 20mm, x2: 185mm, y2: 20mm, stroke: thick-stroke),
-      (x1: 135mm, y1: 25mm, x2: 185mm, y2: 25mm, stroke: thick-stroke),
-    ),
+      (x1: 135mm, y1: 25mm, x2: 185mm, y2: 25mm, stroke: thick-stroke)
+    )
   ),
   form-2a: (
     width: 185mm,
@@ -201,7 +224,7 @@
       (x: 65mm, y: 0mm, width: 110mm, height: 15mm, text: "_title", text-size: 7mm),
 
       (x: 175mm, y: 0mm, width: 10mm, height: 7mm, text: [Лист]),
-      (x: 175mm, y: 7mm, width: 10mm, height: 8mm, text: "_page"),
+      (x: 175mm, y: 7mm, width: 10mm, height: 8mm, text: "_page")
     ),
     lines: (
       // Вертикальные линии
@@ -218,7 +241,7 @@
       (x1: 0mm, y1: 0mm, x2: 185mm, y2: 0mm, stroke: thick-stroke),
       (x1: 0mm, y1: 15mm, x2: 185mm, y2: 15mm, stroke: thick-stroke),
       (x1: 0mm, y1: 10mm, x2: 65mm, y2: 10mm, stroke: thick-stroke),
-      (x1: 175mm, y1: 7mm, x2: 185mm, y2: 7mm, stroke: thick-stroke),
-    ),
-  ),
+      (x1: 175mm, y1: 7mm, x2: 185mm, y2: 7mm, stroke: thick-stroke)
+    )
+  )
 )

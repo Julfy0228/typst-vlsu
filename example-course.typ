@@ -54,7 +54,7 @@ The system is implemented using modern technologies and is ready for use. The ex
 #show: frame.with(
   frame-fields,
   table: (
-    first: tables.form-2,
+    first: tables.form-1,
     continuation: tables.form-2a,
   )
 )
