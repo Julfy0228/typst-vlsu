@@ -21,6 +21,7 @@ $files = @(
     "template.typ",
     "titlepage.typ",
     "appendix.typ",
+    "drawing.typ",
     "typst.toml"
 )
 

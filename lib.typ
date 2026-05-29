@@ -4,5 +4,6 @@
 
 #import "template.typ": template, struct
 #import "appendix.typ": appendixes, appendix-heading
+#import "drawing.typ": drawing-sheet
 #import "frame/utils.typ": frame
 #import "frame/config.typ": tables

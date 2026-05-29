@@ -5,6 +5,13 @@
 }
 
 #let frame-cell-text(cell, body, size: auto) = context {
+  set par(
+    first-line-indent: 0pt,
+    justify: false,
+    leading: 0.8em,
+    spacing: 0pt,
+  )
+
   text(
     font: ("ГОСТ тип А", "Times New Roman"),
     style: "italic",
@@ -23,6 +30,8 @@
     if text-value.starts-with("_") and text-value in fields {
       fields.at(text-value)
     }
+  } else if type(text-value) == function {
+    text-value(fields)
   } else {
     text-value
   }
@@ -51,7 +60,7 @@
 #let draw-frame-cell(cell-data, table, fields, origin) = {
   let body = resolve-frame-cell-body(cell-data, fields)
   let inset = get-value(cell-data, "inset", default: 1mm)
-  let cell-align = get-value(cell-data, "align", default: center)
+  let cell-align = get-value(cell-data, "align", default: left)
 
   place(
     top + left,
@@ -126,7 +135,7 @@
 
 #let make-background(fields, table, start-page) = context {
   let page-num = counter(page).get().first()
-  if page-num <= 2 { return }
+  if page-num < start-page { return }
   let active-table = resolve-frame-table(table, page-num, start-page)
 
   place(
