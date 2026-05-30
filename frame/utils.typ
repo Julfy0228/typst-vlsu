@@ -155,7 +155,7 @@
     _pages: [#counter(page).final().first()]
   )
 
-  draw-table(active-table, fields + numbering)
+  draw-table(active-table, numbering + fields)
 }
 
 #let frame(fields, table: dictionary, doc) = context {

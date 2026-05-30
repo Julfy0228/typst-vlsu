@@ -221,10 +221,10 @@
       (x: 40mm, y: 10mm, width: 15mm, height: 5mm, text: [Подп.]),
       (x: 55mm, y: 10mm, width: 10mm, height: 5mm, text: [Дата]),
 
-      (x: 65mm, y: 0mm, width: 110mm, height: 15mm, text: "_title", text-size: 7mm),
+      (x: 65mm, y: 0mm, width: 110mm, height: 15mm, text: "_title", text-size: 7mm, align: center),
 
       (x: 175mm, y: 0mm, width: 10mm, height: 7mm, text: [Лист]),
-      (x: 175mm, y: 7mm, width: 10mm, height: 8mm, text: "_page")
+      (x: 175mm, y: 7mm, width: 10mm, height: 8mm, text: "_page", align: center)
     ),
     lines: (
       // Вертикальные линии
